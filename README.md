@@ -6,6 +6,7 @@
 - Instructor sınıfında; companyName 
 - Applicant sınıfında; about
 - Employee sınıfında; position alanları olcak.<br> <br>
+
 4- Instructor,Applicant,Employee bir user türü olacak.(Inheritance konusu)<br>
 5- Oluşturulan entitylerin veritabanına migration işlemlerini yapınız.<br>
 6- Bu sınıfların dataaccess katmanında repositorylerini yazınız.<br>
