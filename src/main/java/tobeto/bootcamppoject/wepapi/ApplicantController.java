@@ -1,41 +1,37 @@
 package tobeto.bootcamppoject.wepapi;
 
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tobeto.bootcamppoject.dataAccess.abstracts.ApplicantRepository;
-import tobeto.bootcamppoject.entity.Applicant;
-
-import java.util.List;
+import tobeto.bootcamppoject.business.abstracts.ApplicantService;
+import tobeto.bootcamppoject.business.dto.Applicant.request.ApplicantCreatRequest;
+import tobeto.bootcamppoject.business.dto.Applicant.response.ApplicantCreateResponse;
 
 @RestController
 @RequestMapping("/applicants")
+@AllArgsConstructor
 public class ApplicantController {
-    private ApplicantRepository applicantRepository;
 
-    public ApplicantController(ApplicantRepository applicantRepository) {
-        this.applicantRepository = applicantRepository;
-    }
+    private ApplicantService applicantService;
 
-    @RequestMapping("/save")
-    public Applicant applicant() {
-        Applicant applicant=new Applicant();
-        applicant.setUserName("Anpu");
-        applicant.setFirstName("ismail");
-        applicant.setLastName("bayraktar");
-        applicant.setEmail("ismailbayraktar@gmail.com");
-        applicant.setAbout("Çok zorlanıyorum, Herşey çok karışık ve zor.");
-        applicant.setPassword("88888888");
-        applicantRepository.save(applicant);
-        return applicant;
+    @PostMapping
+    public ApplicantCreateResponse create(@RequestBody ApplicantCreatRequest applicantCreatRequest){
+
+        return applicantService.create(applicantCreatRequest);
 
     }
 
-    @RequestMapping("/getall")
-    public List<Applicant> findAll() {
-        List<Applicant> applicants=applicantRepository.findAll();
-        return applicants;
+/*
+    @PostMapping
+    ApplicantCreatRequest create(@RequestBody ApplicantCreatRequest applicantCreatRequest){
+       return applicantService.create(applicantCreatRequest);
     }
 
-
+    ApplicantCreatRequest getByID(Integer applicantID){
+        return applicantService.getById(applicantID);
+    }
+*/
 
 }

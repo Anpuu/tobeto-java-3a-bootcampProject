@@ -5,15 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tobeto.bootcamppoject.core.entities.MyUser;
-
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="instructors")
-@Entity
 @EqualsAndHashCode(callSuper = true)
-public class Instructor extends MyUser<Integer> {
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Instructor extends User{
 
     @Column(name = "companyName")
     private String companyName;

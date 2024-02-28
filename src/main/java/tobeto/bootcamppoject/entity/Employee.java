@@ -2,12 +2,13 @@ package tobeto.bootcamppoject.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tobeto.bootcamppoject.core.entities.MyUser;
+import tobeto.bootcamppoject.core.entities.BaseEntity;
 
 @Data
 @Entity
@@ -15,9 +16,10 @@ import tobeto.bootcamppoject.core.entities.MyUser;
 @NoArgsConstructor
 @Table(name ="employees" )
 @EqualsAndHashCode(callSuper = true)
-public class Employee extends MyUser<Integer> {
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Employee extends User{
+
     @Column(name="position")
     private String position;
-   /* @OneToMany(mappedBy = "employee")//bir çalışanın birden fazla başvurusu olabilir
-    private List<Applicant> applicants;*/
+
 }
