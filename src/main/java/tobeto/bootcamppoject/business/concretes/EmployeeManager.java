@@ -3,8 +3,9 @@ package tobeto.bootcamppoject.business.concretes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
-import tobeto.bootcamppoject.business.dto.Employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.Employee.response.EmployeeCreateResponse;
+import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
+import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.EmployeeRepository;
 import tobeto.bootcamppoject.entity.Employee;
@@ -18,7 +19,9 @@ public class EmployeeManager implements EmployeeService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public EmployeeCreateResponse create(final EmployeeCreateRequest employeeCreateRequest) {
+    public EmployeeCreateResponse create(
+            final EmployeeCreateRequest employeeCreateRequest
+    ) {
 
         Employee employeeToBeCreat = modelMapperService.forRequest()
                 .map(employeeCreateRequest,Employee.class);
@@ -27,6 +30,20 @@ public class EmployeeManager implements EmployeeService {
 
         EmployeeCreateResponse response = modelMapperService.forResponse()
                 .map(employeeToBeCreat,EmployeeCreateResponse.class);
+
+        return response;
+    }
+
+    @Override
+    public EmployeeGetByIdResponse getById(
+            Integer employeeID
+    ) {
+
+        Employee employeeGettingById = employeeRepository.findById(employeeID)
+                .orElseThrow(() -> new RuntimeException("Bu ID'e sahip bir çalışan bulunamamıştır...!"));
+
+        EmployeeGetByIdResponse response = modelMapperService.forResponse()
+                .map(employeeGettingById,EmployeeGetByIdResponse.class);
 
         return response;
     }

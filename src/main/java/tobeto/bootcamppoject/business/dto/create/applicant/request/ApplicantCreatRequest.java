@@ -1,4 +1,4 @@
-package tobeto.bootcamppoject.business.dto.Applicant.request;
+package tobeto.bootcamppoject.business.dto.create.applicant.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

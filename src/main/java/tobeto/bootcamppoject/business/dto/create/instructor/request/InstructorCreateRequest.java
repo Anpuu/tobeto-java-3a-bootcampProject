@@ -1,4 +1,4 @@
-package tobeto.bootcamppoject.business.dto.Employee.request;
+package tobeto.bootcamppoject.business.dto.create.instructor.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeCreateRequest {
+public class InstructorCreateRequest {
     private String firstName;
     private String lastName;
     private String email;
@@ -17,5 +17,5 @@ public class EmployeeCreateRequest {
     private String userName;
     private String nationalIdentity;
     private Date dateOfBirth;
-    private String position;
+    private String companyName;
 }

@@ -1,34 +1,30 @@
 package tobeto.bootcamppoject.wepapi;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import tobeto.bootcamppoject.dataAccess.abstracts.InstructorRepository;
-import tobeto.bootcamppoject.entity.Instructor;
-
-import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import tobeto.bootcamppoject.business.abstracts.InstructorService;
+import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
+import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
 
 @RestController
-@RequestMapping("/instructor")
+@RequestMapping("/instructors")
+@RequiredArgsConstructor
 public class InstructorController {
-    private InstructorRepository instructorRepository;
-    public InstructorController(InstructorRepository instructorRepository) {
-        this.instructorRepository = instructorRepository;
+
+    private final InstructorService instructorService;
+
+    @PostMapping
+    public InstructorCreateResponse create(
+          @RequestBody final InstructorCreateRequest instructorCreateRequest
+    ){
+        return instructorService.create(instructorCreateRequest);
     }
 
-
-    @RequestMapping("/save")
-    public Instructor instructor() {
-        Instructor instructor = new Instructor();
-        instructor.setUserName("ismail");
-        instructor.setEmail("ismail@gmail.com");
-        instructor.setCompanyName("Bayraktar CO.");
-        instructorRepository.save(instructor);
-        return instructor;
+    @GetMapping("/{id}")
+    public InstructorGetByIdResponse getById(
+           @PathVariable Integer id
+    ){
+       return instructorService.getById(id);
     }
-
-    @RequestMapping("/getall")
-    public List<Instructor> findAll() {
-        return instructorRepository.findAll();
-    }
-
 }

@@ -1,20 +1,11 @@
 package tobeto.bootcamppoject.wepapi;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
-import tobeto.bootcamppoject.business.concretes.EmployeeManager;
-import tobeto.bootcamppoject.business.dto.Employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.Employee.response.EmployeeCreateResponse;
-import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
-import tobeto.bootcamppoject.dataAccess.abstracts.EmployeeRepository;
-import tobeto.bootcamppoject.entity.Employee;
-
-import java.util.List;
+import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
+import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
 
 @RestController
 @RequestMapping("/employees")
@@ -28,6 +19,13 @@ public class EmployeeController {
             @RequestBody final EmployeeCreateRequest employeeCreateRequest
     ){
         return employeeService.create(employeeCreateRequest);
+    }
+
+    @GetMapping(value = "/{id}")
+    public EmployeeGetByIdResponse getById(
+            @PathVariable  Integer id
+    ){
+        return employeeService.getById(id);
     }
 
 }
