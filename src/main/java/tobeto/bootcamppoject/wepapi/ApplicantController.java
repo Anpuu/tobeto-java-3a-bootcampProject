@@ -1,41 +1,40 @@
 package tobeto.bootcamppoject.wepapi;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.ApplicantService;
 import tobeto.bootcamppoject.business.dto.create.applicant.request.ApplicantCreatRequest;
-import tobeto.bootcamppoject.business.dto.create.applicant.response.ApplicantCreateResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetByIdResponse;
+import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/applicants")
-@AllArgsConstructor
-public class ApplicantController {
+@RequiredArgsConstructor
+public class ApplicantController extends BaseController {
 
-    private ApplicantService applicantService;
+    private final ApplicantService applicantService;
 
     @PostMapping
-    public ApplicantCreateResponse create(
-            @RequestBody ApplicantCreatRequest applicantCreatRequest
+    public ResponseEntity<?> create(
+            @RequestBody final ApplicantCreatRequest applicantCreatRequest
     ) {
-
-        return applicantService.create(applicantCreatRequest);
-
+        return handleDataResult(applicantService.
+                create(applicantCreatRequest));
     }
 
     @GetMapping(value = "/{id}")
-    public ApplicantGetByIdResponse getById(
+    public ResponseEntity<?> getById(
             @PathVariable Integer id
     ) {
-
-        return applicantService.getById(id);
+        return handleDataResult(applicantService.getById(id));
     }
 
     @GetMapping(value = "/getall")
-    public List<ApplicantGetAllResponse> getAll(){
-        return applicantService.getAll();
+    public ResponseEntity<?> getAll() {
+        return handleDataResult(applicantService.getAll());
     }
 }
