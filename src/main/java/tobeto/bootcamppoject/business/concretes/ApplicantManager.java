@@ -32,48 +32,5 @@ public class ApplicantManager implements ApplicantService {
 
         return response;
     }
-/*
-    @Override
-    public ApplicantCreatRequest updateApplicant(
-          final ApplicantCreatRequest applicantCreatRequest,
-          final Integer applicantID
-    ) {
-        ApplicantCreatRequest applicantToBeUpdate = applicantRepository.findById(applicantID)
-                .orElseThrow(() -> new RuntimeException("Id'e ait bir başvuran bulunamadı.!"));
 
-        modelMapperService.forResponse().map(applicantCreatRequest,applicantToBeUpdate);
-
-       return applicantRepository.save(applicantToBeUpdate);
-    }
-
-    @Override
-    public ApplicantCreatRequest getById(Integer applicantID) {
-
-        return applicantRepository.findById(applicantID)
-                .orElseThrow(() -> new RuntimeException("Id'e ait bir başvuran bulunamadı."));
-    }
-
-    @Override
-    public void getAll() {
-
-        applicantRepository.findAll();
-
-    }
-
-    @Override
-    public void deleteApplicantByID(
-           final ApplicantCreatRequest applicantCreatRequest,
-           final Integer applicantID
-    ) {
-        applicantRepository.findById(applicantID)
-                .orElseThrow(() -> new RuntimeException("Id'e sahip bir başvuran bulunamadı..."));
-        applicantRepository.deleteById(applicantID);
-    }
-
-    @Override
-    public void deleteAll() {
-        applicantRepository.deleteAll();
-    }
-
-*/
 }

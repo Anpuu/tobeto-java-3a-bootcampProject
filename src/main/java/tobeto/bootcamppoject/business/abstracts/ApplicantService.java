@@ -7,14 +7,5 @@ import tobeto.bootcamppoject.business.dto.Applicant.response.ApplicantCreateResp
 public interface ApplicantService {
     ApplicantCreateResponse create(ApplicantCreatRequest applicantCreatRequest);
 
- /*   ApplicantCreatRequest updateApplicant(ApplicantCreatRequest applicantCreatRequest, Integer applicantID);
-
-    ApplicantCreatRequest getById(Integer applicantID);
-
-    void getAll();
-
-    void deleteApplicantByID(ApplicantCreatRequest applicantCreatRequest, Integer applicantID);
-
-    void deleteAll();*/
 
 }
