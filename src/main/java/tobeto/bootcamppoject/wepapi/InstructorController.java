@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.InstructorService;
 import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
 import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/instructors")
@@ -26,5 +29,10 @@ public class InstructorController {
            @PathVariable Integer id
     ){
        return instructorService.getById(id);
+    }
+
+    @GetMapping(value = "/getall")
+    public List<InstructorGetAllResponse> getAll(){
+        return instructorService.getAll();
     }
 }

@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
 import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
 import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
@@ -26,6 +29,11 @@ public class EmployeeController {
             @PathVariable  Integer id
     ){
         return employeeService.getById(id);
+    }
+
+    @GetMapping(value = "/getall")
+    public List<EmployeeGetAllResponse> getAll(){
+        return employeeService.getAll();
     }
 
 }
