@@ -1,6 +1,7 @@
 package tobeto.bootcamppoject.wepapi;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.InstructorService;
 import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
@@ -13,26 +14,26 @@ import java.util.List;
 @RestController
 @RequestMapping("/instructors")
 @RequiredArgsConstructor
-public class InstructorController {
+public class InstructorController extends BaseController {
 
     private final InstructorService instructorService;
 
     @PostMapping
-    public InstructorCreateResponse create(
+    public ResponseEntity<?> create(
           @RequestBody final InstructorCreateRequest instructorCreateRequest
     ){
-        return instructorService.create(instructorCreateRequest);
+        return handleDataResult(instructorService.create(instructorCreateRequest));
     }
 
     @GetMapping("/{id}")
-    public InstructorGetByIdResponse getById(
+    public ResponseEntity<?> getById(
            @PathVariable Integer id
     ){
-       return instructorService.getById(id);
+       return handleDataResult(instructorService.getById(id));
     }
 
     @GetMapping(value = "/getall")
-    public List<InstructorGetAllResponse> getAll(){
-        return instructorService.getAll();
+    public ResponseEntity<?> getAll(){
+        return handleDataResult(instructorService.getAll());
     }
 }

@@ -8,6 +8,8 @@ import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorC
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
+import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.InstructorRepository;
 import tobeto.bootcamppoject.entity.Instructor;
@@ -24,7 +26,7 @@ public class InstructorManager implements InstructorService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public InstructorCreateResponse create(
+    public DataResult<InstructorCreateResponse> create(
             final InstructorCreateRequest instructorCreateRequest
     ) {
         Instructor instructorToBeSave = modelMapperService.forRequest()
@@ -35,11 +37,11 @@ public class InstructorManager implements InstructorService {
         InstructorCreateResponse response = modelMapperService.forResponse()
                 .map(instructorToBeSave, InstructorCreateResponse.class);
 
-        return response;
+        return new SuccessDataResult<InstructorCreateResponse>(response,"Eğitmen kaydedildi.");
     }
 
     @Override
-    public InstructorGetByIdResponse getById(
+    public DataResult<InstructorGetByIdResponse> getById(
             final Integer instructorID
     ) {
 
@@ -49,11 +51,11 @@ public class InstructorManager implements InstructorService {
         InstructorGetByIdResponse response = modelMapperService
                 .forResponse().map(gettingById, InstructorGetByIdResponse.class);
 
-        return response;
+        return new SuccessDataResult<InstructorGetByIdResponse>(response,"ID'e Sahip eğitmen getirildi.");
     }
 
     @Override
-    public List<InstructorGetAllResponse> getAll() {
+    public DataResult<List<InstructorGetAllResponse>> getAll() {
 
         List<Instructor> instructors = instructorRepository.findAll();
 
@@ -62,6 +64,6 @@ public class InstructorManager implements InstructorService {
                         .forResponse().map(instructor,InstructorGetAllResponse.class))
                         .collect(Collectors.toList());
 
-        return instructorGetAllResponses;
+        return new SuccessDataResult<List<InstructorGetAllResponse>>(instructorGetAllResponses,"Tüm eğitmenler listelendi.");
     }
 }

@@ -8,6 +8,8 @@ import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreat
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
+import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.EmployeeRepository;
 import tobeto.bootcamppoject.entity.Employee;
@@ -24,7 +26,7 @@ public class EmployeeManager implements EmployeeService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public EmployeeCreateResponse create(
+    public DataResult<EmployeeCreateResponse> create(
             final EmployeeCreateRequest employeeCreateRequest
     ) {
 
@@ -36,11 +38,11 @@ public class EmployeeManager implements EmployeeService {
         EmployeeCreateResponse response = modelMapperService.forResponse()
                 .map(employeeToBeCreat,EmployeeCreateResponse.class);
 
-        return response;
+        return new SuccessDataResult<EmployeeCreateResponse>(response,"Çalışan başarılı bir şekilde oluşturulmuştur.");
     }
 
     @Override
-    public EmployeeGetByIdResponse getById(
+    public DataResult<EmployeeGetByIdResponse> getById(
             Integer employeeID
     ) {
 
@@ -50,11 +52,12 @@ public class EmployeeManager implements EmployeeService {
         EmployeeGetByIdResponse response = modelMapperService.forResponse()
                 .map(employeeGettingById,EmployeeGetByIdResponse.class);
 
-        return response;
+        return new SuccessDataResult
+                <EmployeeGetByIdResponse>(response,"Bu ID'e ait bir çalışan bulunamadı.");
     }
 
     @Override
-    public List<EmployeeGetAllResponse> getAll() {
+    public DataResult<List<EmployeeGetAllResponse>> getAll() {
 
         List<Employee> employees = employeeRepository.findAll();
 
@@ -63,6 +66,6 @@ public class EmployeeManager implements EmployeeService {
                                 .forResponse().map(employee, EmployeeGetAllResponse.class))
                         .collect(Collectors.toList());
 
-        return employeeGetAllResponses;
+        return new SuccessDataResult<List<EmployeeGetAllResponse>>(employeeGetAllResponses,"Tüm çalışanlar listelendi.");
     }
 }

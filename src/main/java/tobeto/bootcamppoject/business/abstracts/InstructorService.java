@@ -4,13 +4,14 @@ import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCr
 import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
 import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
+import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
 
 public interface InstructorService {
-    InstructorCreateResponse create(InstructorCreateRequest instructorCreateRequest);
+    DataResult<InstructorCreateResponse> create(InstructorCreateRequest instructorCreateRequest);
 
-    InstructorGetByIdResponse getById(Integer instructorID);
+    DataResult<InstructorGetByIdResponse> getById(Integer instructorID);
 
-    List<InstructorGetAllResponse> getAll();
+    DataResult<List<InstructorGetAllResponse>> getAll();
 }

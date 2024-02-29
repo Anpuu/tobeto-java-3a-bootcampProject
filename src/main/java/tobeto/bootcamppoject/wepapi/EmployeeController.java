@@ -1,10 +1,10 @@
 package tobeto.bootcamppoject.wepapi;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
 import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
 
@@ -13,27 +13,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/employees")
 @RequiredArgsConstructor
-public class EmployeeController {
+public class EmployeeController extends BaseController{
 
     private final EmployeeService employeeService;
 
     @PostMapping
-    public EmployeeCreateResponse create(
+    public ResponseEntity<?> create(
             @RequestBody final EmployeeCreateRequest employeeCreateRequest
     ){
-        return employeeService.create(employeeCreateRequest);
+        return handleDataResult(employeeService.create(employeeCreateRequest));
     }
 
     @GetMapping(value = "/{id}")
-    public EmployeeGetByIdResponse getById(
+    public ResponseEntity<?> getById(
             @PathVariable  Integer id
     ){
-        return employeeService.getById(id);
+        return handleDataResult(employeeService.getById(id));
     }
 
     @GetMapping(value = "/getall")
-    public List<EmployeeGetAllResponse> getAll(){
-        return employeeService.getAll();
+    public ResponseEntity<?> getAll(){
+        return handleDataResult(employeeService.getAll());
     }
 
 }

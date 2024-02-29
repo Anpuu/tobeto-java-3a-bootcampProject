@@ -4,13 +4,14 @@ import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreate
 import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
+import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
 
 public interface EmployeeService {
-    EmployeeCreateResponse create(EmployeeCreateRequest employeeCreateRequest);
+    DataResult<EmployeeCreateResponse> create(EmployeeCreateRequest employeeCreateRequest);
 
-    EmployeeGetByIdResponse getById(Integer employeeID);
+    DataResult<EmployeeGetByIdResponse> getById(Integer employeeID);
 
-    List<EmployeeGetAllResponse> getAll();
+    DataResult<List<EmployeeGetAllResponse>> getAll();
 }
