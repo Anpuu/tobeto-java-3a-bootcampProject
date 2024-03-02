@@ -1,0 +1,425 @@
+{
+	"info": {
+		"_postman_id": "81244830-5929-49f9-be26-4e79c6c60600",
+		"name": "Bootcamp_Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33039308"
+	},
+	"item": [
+		{
+			"name": "PostMapping",
+			"item": [
+				{
+					"name": "Applicant Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"JPA BUDDY\",\r\n    \"firstName\" : \"İsmail\",\r\n    \"lastName\" : \"Bayraktar\",\r\n    \"dateOfBirthday\" : \"1994-12-08\",\r\n    \"nationalIdentity\" : \"123123\",\r\n    \"email\" : \"bayraktarismail00@gmail.com\",\r\n    \"password\" : \"312312\",\r\n    \"about\" : \"Bayraktar CO.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"applicants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"JPA BUDDY\",\r\n    \"firstName\" : \"İsmail\",\r\n    \"lastName\" : \"Bayraktar\",\r\n    \"dateOfBirthday\" : \"1994-12-08\",\r\n    \"nationalIdentity\" : \"123123\",\r\n    \"email\" : \"bayraktarismail00@gmail.com\",\r\n    \"password\" : \"312312\",\r\n    \"position\" : \"Bayraktar CO.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Instructor Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"JPA BUDDY\",\r\n    \"firstName\" : \"İsmail\",\r\n    \"lastName\" : \"Bayraktar\",\r\n    \"dateOfBirthday\" : \"1994-12-08\",\r\n    \"nationalIdentity\" : \"123123\",\r\n    \"email\" : \"bayraktarismail00@gmail.com\",\r\n    \"password\" : \"312312\",\r\n    \"companyName\" : \"Bayraktar CO.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/instructors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"instructors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetMapping",
+			"item": [
+				{
+					"name": "GetById",
+					"item": [
+						{
+							"name": "getById Applicants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/applicants/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"applicants",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById Employee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employees/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employees",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById Instructor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employees/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employees",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetAll",
+					"item": [
+						{
+							"name": "Get All Applicants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/applicants/getall",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"applicants",
+										"getall"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Employees",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employees/getall",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employees",
+										"getall"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Insturctors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/instructors/getall",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"instructors",
+										"getall"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get By Position",
+					"item": [
+						{
+							"name": "GetEmployeeByPosition",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employees/position/Cocono",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employees",
+										"position",
+										"Cocono"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PutMapping",
+			"item": [
+				{
+					"name": "Applicant UpdateByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"iBayraktar\",\r\n    \"firstName\" : \"Ahmet\",\r\n    \"lastName\" : \"Sezer\",\r\n    \"dateOfBirthday\" : \"1990-12-08\",\r\n    \"nationalIdentity\" : \"888\",\r\n    \"about\" : \"Cocono\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/applicants/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"applicants",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee UpdateByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"userName\" : \"zonki\",\r\n    \"firstName\" : \"Ahmet\",\r\n    \"lastName\" : \"Sezer\",\r\n    \"dateOfBirthday\" : \"1990-12-08\",\r\n    \"nationalIdentity\" : \"000000\",\r\n    \"position\" : \"Cocono\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/employees/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Instructors UpdateByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"iBayraktar\",\r\n    \"firstName\" : \"Ahmet\",\r\n    \"lastName\" : \"Sezer\",\r\n    \"dateOfBirthday\" : \"1990-12-08\",\r\n    \"nationalIdentity\" : \"888\",\r\n    \"about\" : \"Cocono\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/instructors/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"instructors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeleteMapping",
+			"item": [
+				{
+					"name": "Delete ByID",
+					"item": [
+						{
+							"name": "Applicant Delete ByID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/applicants/17",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"applicants",
+										"17"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employees Delete ByID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employees/14",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employees",
+										"14"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Instructor Delete ByID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/instructors/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"instructors",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Applicant Delete All",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/applicants/deleteall",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"applicants",
+										"deleteall"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
