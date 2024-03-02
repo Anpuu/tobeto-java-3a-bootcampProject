@@ -18,6 +18,12 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 - Exception kavramı araştırıldı.
 ### 3. Ödev:
 - Results yapısı projeye entegre edildi.
-### Ayrıca, projeyi test etmek için Postman koleksiyon dosyası da repoya eklenmiştir.<br>
+  
+#### Ayrıca, projeyi test etmek için Postman koleksiyon dosyası da repoya eklenmiştir.<br>
 
-### Proje detaylarına ve kodlara erişmek için tobeto-java-3a-bootcampProject reposunu ziyaret edebilirsiniz.
+#### Proje detaylarına ve kodlara erişmek için tobeto-java-3a-bootcampProject reposunu ziyaret edebilirsiniz.
+
+#### Database olarak postgreSQL kullanılmıştır. Projeyi çalıştırmak için;
+- resources paketi altında -> application.properties dosyası içerisinde ki ayarları kendinize göre güncellemeniz gerekmektedir.
+
+## Katkıda bulunmak veya projeyi kullanmak için benimle iletişime geçebilirsiniz.
