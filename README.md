@@ -1,8 +1,8 @@
-TOBETO JAVA 3A BOOTCAMP PROJECT
-Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi içermektedir.
+## TOBETO JAVA 3A BOOTCAMP PROJECT<br>
+Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi içermektedir.<br>
 
-Yapılanlar:
-1. Ödev:
+Yapılanlar:<br>
+### 1. Ödev:
 Spring Boot projesi oluşturuldu ve geliştirildi.
 entities katmanında User, Instructor, Applicant ve Employee sınıfları oluşturuldu.
 Her sınıf için ilgili alanlar tanımlandı.
