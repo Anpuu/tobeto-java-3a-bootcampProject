@@ -7,6 +7,7 @@ import tobeto.bootcamppoject.business.abstracts.ApplicantService;
 import tobeto.bootcamppoject.business.dto.create.applicant.request.ApplicantCreatRequest;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetByIdResponse;
+import tobeto.bootcamppoject.business.dto.update.applicant.request.ApplicantUpdateRequest;
 import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class ApplicantController extends BaseController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getById(
-            @PathVariable Integer id
+            @PathVariable final Integer id
     ) {
         return handleDataResult(applicantService.getById(id));
     }
@@ -36,5 +37,25 @@ public class ApplicantController extends BaseController {
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAll() {
         return handleDataResult(applicantService.getAll());
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> updateApplicantById(
+            @RequestBody final ApplicantUpdateRequest applicantUpdateRequest,
+            @PathVariable final int id
+    ) {
+        return handleDataResult(
+                applicantService.updateByIDApplicant(applicantUpdateRequest, id)
+        );
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> deleteApplicantByID(@PathVariable final Integer id){
+        return handleDataResult(applicantService.deletedByIdApplicant(id));
+    }
+
+    @DeleteMapping(value = "/deleteall")
+    public ResponseEntity<?> deleteAllApplicant(){
+        return handleDataResult(applicantService.deletedAllApplicant());
     }
 }

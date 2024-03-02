@@ -1,6 +1,5 @@
 package tobeto.bootcamppoject.business.concretes;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.ApplicantService;
@@ -9,6 +8,8 @@ import tobeto.bootcamppoject.business.dto.create.applicant.request.ApplicantCrea
 import tobeto.bootcamppoject.business.dto.create.applicant.response.ApplicantCreateResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetByIdResponse;
+import tobeto.bootcamppoject.business.dto.update.applicant.request.ApplicantUpdateRequest;
+import tobeto.bootcamppoject.business.dto.update.applicant.response.ApplicantUpdateResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperServiceImpl;
@@ -58,7 +59,7 @@ public class ApplicantManager implements ApplicantService {
                 .map(gettingApplicantById, ApplicantGetByIdResponse.class);
 
         return new SuccessDataResult<ApplicantGetByIdResponse>
-                (response,ApplicantMessage.ApplicantBroughtById);
+                (response, ApplicantMessage.ApplicantBroughtById);
     }
 
     @Override
@@ -72,6 +73,45 @@ public class ApplicantManager implements ApplicantService {
                         .collect(Collectors.toList());
 
         return new SuccessDataResult<List<ApplicantGetAllResponse>>
-                (applicantResponses,ApplicantMessage.ApplicantListed);
+                (applicantResponses, ApplicantMessage.ApplicantListed);
     }
+
+    @Override
+    public DataResult<ApplicantUpdateResponse> updateByIDApplicant(
+           final ApplicantUpdateRequest applicantUpdateRequest,
+           final Integer id
+    ) {
+        Applicant foundApplicant = applicantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bu ID'e sahip başvuran bulunamadı."));
+
+        Applicant applicantToUpdate = modelMapperService.forRequest().map(applicantUpdateRequest, Applicant.class);
+
+        foundApplicant.setId(id);
+        foundApplicant.setUpdateTime(LocalDateTime.now());
+        foundApplicant.setFirstName(applicantToUpdate.getFirstName() != null ? applicantToUpdate.getFirstName() : foundApplicant.getFirstName());
+        foundApplicant.setLastName(applicantToUpdate.getLastName() != null ? applicantToUpdate.getLastName() : foundApplicant.getLastName());
+        foundApplicant.setUserName(applicantToUpdate.getUserName() != null ? applicantToUpdate.getUserName() : foundApplicant.getUserName());
+        foundApplicant.setAbout(applicantToUpdate.getAbout() != null ? applicantToUpdate.getAbout() : foundApplicant.getAbout());
+        foundApplicant.setDateOfBirth(applicantToUpdate.getDateOfBirth() != null ? applicantToUpdate.getDateOfBirth() : foundApplicant.getDateOfBirth());
+        foundApplicant.setNationalIdentity(applicantToUpdate.getNationalIdentity() != null ? applicantToUpdate.getNationalIdentity() : foundApplicant.getNationalIdentity());
+
+        applicantRepository.save(foundApplicant);
+
+        ApplicantUpdateResponse response = modelMapperService.forResponse().map(foundApplicant, ApplicantUpdateResponse.class);
+
+        return new SuccessDataResult<ApplicantUpdateResponse>(response, "Güncelleme başarı ile gerçekleşti.");
+    }
+
+    @Override
+    public DataResult<?> deletedByIdApplicant(Integer id) {
+        applicantRepository.deleteById(id);
+        return new SuccessDataResult("İlgili ID'e sahip başvuran silindi.");
+    }
+
+    @Override
+    public DataResult<?> deletedAllApplicant() {
+        applicantRepository.deleteAll();
+        return new SuccessDataResult("Tüm başvuranlar silindi.");
+    }
+
 }
