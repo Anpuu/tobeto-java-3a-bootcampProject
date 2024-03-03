@@ -43,7 +43,7 @@ public class EmployeeManager implements EmployeeService {
     @Override
     public DataResult<EmployeeGetByIdResponse> getById(Integer employeeID) {
 
-        Employee employeeGettingById = employeeRepository.findById(employeeID).orElseThrow(() -> new RuntimeException("Bu ID'e sahip bir çalışan bulunamamıştır...!"));
+        Employee employeeGettingById = employeeRepository.findById(employeeID).orElseThrow(() -> new RuntimeException("İlgili ID'e sahip çalışan getirilmiştir."));
 
         EmployeeGetByIdResponse response = modelMapperService.forResponse().map(employeeGettingById, EmployeeGetByIdResponse.class);
 

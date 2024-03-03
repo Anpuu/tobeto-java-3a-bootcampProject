@@ -78,8 +78,8 @@ public class ApplicantManager implements ApplicantService {
 
     @Override
     public DataResult<ApplicantUpdateResponse> updateByIDApplicant(
-           final ApplicantUpdateRequest applicantUpdateRequest,
-           final Integer id
+            final ApplicantUpdateRequest applicantUpdateRequest,
+            final Integer id
     ) {
         Applicant foundApplicant = applicantRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Bu ID'e sahip başvuran bulunamadı."));

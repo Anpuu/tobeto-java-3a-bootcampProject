@@ -7,7 +7,7 @@ import tobeto.bootcamppoject.entity.Employee;
 import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-    List<Employee> findAllByPosition(@Param("position") String position);
+    List<Employee> findAllByPosition(String position);
 
-    Employee getByEmail(String email);
+    Employee getByEmail(@Param("email") String email);
 }
