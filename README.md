@@ -1,10 +1,29 @@
-# Ödev: 
-1-https://start.spring.io/ sitesi üzerinden derste gördüğümüz gibi spring dependencies paketlerini yükleyip generate edin.(Proje ismi bootcampProject olacak).Daha sonra indirdiğiniz klasörün kurulumunu yapıp katmanlarınızı oluşturunuz.(entities,dataaccess,core,business,webapi)<br>
-2-entities katmanında; User,Instructor,Applicant,Employee classlarını oluşturunuz.<br>
-3-person sınıfında; id,username,firstName,lastName,dateOfBirth,nationalIdentity,email,password | Instructor sınıfında; companyName | Applicant sınıfında; about | Employee sınıfında; position alanları olcak. <br>
-4- Instructor,Applicant,Employee bir user türü olacak.(Inheritance konusu)<br>
-5- Oluşturulan entitylerin veritabanına migration işlemlerini yapınız.<br>
-6- Bu sınıfların dataaccess katmanında repositorylerini yazınız.<br>
-7- request-response pattern nedir ? Araştırınız.<br>
-8- @EqualsAndHashCode,@PrimaryKeyJoinColumn,@MappedSuperClass,@Inheritance anotasyonları hakkında araştırma yapınız.<br>
+## TOBETO JAVA 3A BOOTCAMP PROJECT<br>
+Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi içermektedir.<br>
 
+### Yapılanlar:<br>
+### 1. Ödev: <br>
+- Spring Boot projesi oluşturuldu ve geliştirildi.
+- entities katmanında User, Instructor, Applicant ve Employee sınıfları oluşturuldu.
+- Her sınıf için ilgili alanlar tanımlandı.
+- Kalıtım (inheritance) konusu kullanılarak Instructor, Applicant ve Employee sınıfları User sınıfından türetilerek oluşturuldu.
+- Entity'lerin veritabanına migration işlemleri gerçekleştirildi.
+- dataaccess katmanında repository sınıfları yazıldı.
+- Request-Response patterni hakkında araştırma yapıldı.
+- @EqualsAndHashCode, @PrimaryKeyJoinColumn, @MappedSuperClass, @Inheritance gibi anotasyonlar hakkında araştırma yapıldı ve kullanıldı.
+### 2. Ödev:<br>
+- ModelMapper implementasyonu projeye entegre edildi.
+- Her entity için CRUD operasyonları yazıldı.
+- Her entity için özel operasyonlar repository içinde field alanlarına göre eklenerek business katmanında kullanıldı.
+- Exception kavramı araştırıldı.
+### 3. Ödev:
+- Results yapısı projeye entegre edildi.
+  
+#### Ayrıca, projeyi test etmek için Postman koleksiyon dosyası da repoya eklenmiştir.<br>
+
+#### Proje detaylarına ve kodlara erişmek için tobeto-java-3a-bootcampProject reposunu ziyaret edebilirsiniz.
+
+#### Database olarak postgreSQL kullanılmıştır. Projeyi çalıştırmak için;
+- resources paketi altında -> application.properties dosyası içerisinde ki ayarları kendinize göre güncellemeniz gerekmektedir.
+
+## Katkıda bulunmak veya projeyi kullanmak için benimle iletişime geçebilirsiniz.
