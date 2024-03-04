@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class ApplicationCreateResponse {
 
     private int id;
-    private int applicationID;
-    private int bootcampID;
-    private int applicationStateID;
+    private int applicantId;
+    private int bootcampId;
+    private int applicationStateId;
 }

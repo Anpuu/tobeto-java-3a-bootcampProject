@@ -23,7 +23,7 @@ public class BootcampState extends BaseEntity<Integer> {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "bootcampState")
     private List<Bootcamp> bootcampList;
 
 }

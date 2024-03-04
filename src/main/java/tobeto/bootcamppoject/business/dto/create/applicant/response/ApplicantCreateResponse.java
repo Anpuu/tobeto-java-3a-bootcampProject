@@ -15,5 +15,4 @@ public class ApplicantCreateResponse {
     private String lastName;
     private String userName;
     private String about;
-    private LocalDateTime createdTime;
 }

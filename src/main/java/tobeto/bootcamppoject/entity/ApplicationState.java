@@ -23,6 +23,6 @@ public class ApplicationState extends BaseEntity<Integer> {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "applicationState")
     private List<Application> applicationList;
 }

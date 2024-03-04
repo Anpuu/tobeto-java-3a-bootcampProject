@@ -3,7 +3,6 @@ package tobeto.bootcamppoject.business.concretes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.BootcampStateService;
-import tobeto.bootcamppoject.business.dto.create.bootcamp.request.BootcampCreateRequest;
 import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.BootcampStateCreateRequest;
 import tobeto.bootcamppoject.business.dto.create.bootcampstate.response.BootcampStateCreateResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
@@ -22,7 +21,10 @@ public class BootcampStateManager implements BootcampStateService {
     private final BootcampStateRepository bootcampStateRepository;
 
     @Override
-    public DataResult<BootcampStateCreateResponse> create(BootcampStateCreateRequest bootcampStateCreateRequest) {
+    public DataResult<BootcampStateCreateResponse> create(
+           final BootcampStateCreateRequest bootcampStateCreateRequest
+    ) {
+
         BootcampState mappedBootcampStateForRequest = modelMapperService.forRequest()
                 .map(bootcampStateCreateRequest, BootcampState.class);
 

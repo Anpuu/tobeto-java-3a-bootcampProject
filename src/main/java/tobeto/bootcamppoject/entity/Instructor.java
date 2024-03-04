@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,5 +19,8 @@ public class Instructor extends User{
 
     @Column(name = "companyName")
     private String companyName;
+
+    @OneToMany
+    private List<Bootcamp> bootcampList;
 
 }

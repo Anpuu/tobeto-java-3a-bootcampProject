@@ -18,7 +18,7 @@ public class BootcampStateController extends BaseController{
 
     @PostMapping
     public ResponseEntity<?> create(
-            @RequestBody BootcampStateCreateRequest bootcampStateCreateRequest
+            @RequestBody final BootcampStateCreateRequest bootcampStateCreateRequest
     ){
         return  handleDataResult(bootcampStateService.create(bootcampStateCreateRequest));
     }

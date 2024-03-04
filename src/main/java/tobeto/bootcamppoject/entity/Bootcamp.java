@@ -25,10 +25,10 @@ public class Bootcamp extends BaseEntity<Integer> {
     private Instructor instructor;
 
 
-    @Column(name = "start_date")
+    @Column(name = "startDate")
     private Date startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "endDate")
     private Date endDate;
 
     @ManyToOne
