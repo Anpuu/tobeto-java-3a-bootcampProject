@@ -10,6 +10,7 @@ import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetByIdResponse;
 import tobeto.bootcamppoject.business.dto.update.applicant.request.ApplicantUpdateRequest;
 import tobeto.bootcamppoject.business.dto.update.applicant.response.ApplicantUpdateResponse;
+import tobeto.bootcamppoject.core.aspects.logging.Loggable;
 import tobeto.bootcamppoject.core.results.DataResult;
 import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperServiceImpl;
@@ -63,6 +64,7 @@ public class ApplicantManager implements ApplicantService {
     }
 
     @Override
+    @Loggable
     public DataResult<List<ApplicantGetAllResponse>> getAll() {
 
         List<Applicant> applicants = applicantRepository.findAll();

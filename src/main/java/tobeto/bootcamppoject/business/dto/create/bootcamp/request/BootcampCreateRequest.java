@@ -13,5 +13,7 @@ public class BootcampCreateRequest {
     private String name;
     private Date startDate;
     private Date endDate;
+    private int instructorId;
+    private int bootcampStateId;
 
 }
