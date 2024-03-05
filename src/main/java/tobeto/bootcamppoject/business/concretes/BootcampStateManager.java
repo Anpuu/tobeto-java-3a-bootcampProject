@@ -3,8 +3,8 @@ package tobeto.bootcamppoject.business.concretes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.BootcampStateService;
-import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.BootcampStateCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.bootcampstate.response.BootcampStateCreateResponse;
+import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.CreateBootcampStateRequest;
+import tobeto.bootcamppoject.business.dto.create.bootcampstate.response.CreateBootcampStateResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
@@ -21,21 +21,21 @@ public class BootcampStateManager implements BootcampStateService {
     private final BootcampStateRepository bootcampStateRepository;
 
     @Override
-    public DataResult<BootcampStateCreateResponse> create(
-           final BootcampStateCreateRequest bootcampStateCreateRequest
+    public DataResult<CreateBootcampStateResponse> create(
+           final CreateBootcampStateRequest createBootcampStateRequest
     ) {
 
         BootcampState mappedBootcampStateForRequest = modelMapperService.forRequest()
-                .map(bootcampStateCreateRequest, BootcampState.class);
+                .map(createBootcampStateRequest, BootcampState.class);
 
         mappedBootcampStateForRequest.setCreatedTime(LocalDateTime.now());
 
         bootcampStateRepository.save(mappedBootcampStateForRequest);
 
-        BootcampStateCreateResponse response = modelMapperService.forResponse()
-                .map(mappedBootcampStateForRequest, BootcampStateCreateResponse.class);
+        CreateBootcampStateResponse response = modelMapperService.forResponse()
+                .map(mappedBootcampStateForRequest, CreateBootcampStateResponse.class);
 
-        return new SuccessDataResult<BootcampStateCreateResponse>
+        return new SuccessDataResult<CreateBootcampStateResponse>
                 (response, "Bootcamp durumu başarılı bir şekilde oluşturulmuştur.");
     }
 }

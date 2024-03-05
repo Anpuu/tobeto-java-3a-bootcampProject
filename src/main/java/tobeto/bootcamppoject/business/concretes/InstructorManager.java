@@ -3,12 +3,12 @@ package tobeto.bootcamppoject.business.concretes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.InstructorService;
-import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.update.instructor.request.InstructorUpdateRequest;
-import tobeto.bootcamppoject.business.dto.update.instructor.response.InstructorUpdateResponse;
+import tobeto.bootcamppoject.business.dto.create.instructor.request.CreateInstructorRequest;
+import tobeto.bootcamppoject.business.dto.create.instructor.response.CreateInstructorResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.GetAllInstructorResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.GetByIdInstructorResponse;
+import tobeto.bootcamppoject.business.dto.update.instructor.request.UpdateInstructorRequest;
+import tobeto.bootcamppoject.business.dto.update.instructor.response.UpdateInstructorResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
@@ -28,50 +28,50 @@ public class InstructorManager implements InstructorService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public DataResult<InstructorCreateResponse> create(
-            final InstructorCreateRequest instructorCreateRequest
+    public DataResult<CreateInstructorResponse> create(
+            final CreateInstructorRequest createInstructorRequest
     ) {
         Instructor instructorToBeSave = modelMapperService.forRequest()
-                .map(instructorCreateRequest, Instructor.class);
+                .map(createInstructorRequest, Instructor.class);
 
         instructorRepository.save(instructorToBeSave);
 
-        InstructorCreateResponse response = modelMapperService.forResponse()
-                .map(instructorToBeSave, InstructorCreateResponse.class);
+        CreateInstructorResponse response = modelMapperService.forResponse()
+                .map(instructorToBeSave, CreateInstructorResponse.class);
 
-        return new SuccessDataResult<InstructorCreateResponse>(response,"Eğitmen kaydedildi.");
+        return new SuccessDataResult<CreateInstructorResponse>(response,"Eğitmen kaydedildi.");
     }
 
     @Override
-    public DataResult<InstructorGetByIdResponse> getById(
+    public DataResult<GetByIdInstructorResponse> getById(
             final Integer instructorID
     ) {
 
         Instructor gettingById = instructorRepository.findById(instructorID)
                 .orElseThrow(() -> new RuntimeException("Bu ID'e sahip bir Eğitmen bulunamadı...!"));
 
-        InstructorGetByIdResponse response = modelMapperService
-                .forResponse().map(gettingById, InstructorGetByIdResponse.class);
+        GetByIdInstructorResponse response = modelMapperService
+                .forResponse().map(gettingById, GetByIdInstructorResponse.class);
 
-        return new SuccessDataResult<InstructorGetByIdResponse>(response,"ID'e Sahip eğitmen getirildi.");
+        return new SuccessDataResult<GetByIdInstructorResponse>(response,"ID'e Sahip eğitmen getirildi.");
     }
 
     @Override
-    public DataResult<List<InstructorGetAllResponse>> getAll() {
+    public DataResult<List<GetAllInstructorResponse>> getAll() {
 
         List<Instructor> instructors = instructorRepository.findAll();
 
-        List<InstructorGetAllResponse> instructorGetAllResponses =
+        List<GetAllInstructorResponse> getAllInstructorRespons =
                 instructors.stream().map(instructor -> modelMapperService
-                        .forResponse().map(instructor,InstructorGetAllResponse.class))
+                        .forResponse().map(instructor, GetAllInstructorResponse.class))
                         .collect(Collectors.toList());
 
-        return new SuccessDataResult<List<InstructorGetAllResponse>>(instructorGetAllResponses,"Tüm eğitmenler listelendi.");
+        return new SuccessDataResult<List<GetAllInstructorResponse>>(getAllInstructorRespons,"Tüm eğitmenler listelendi.");
     }
 
     @Override
-    public DataResult<InstructorUpdateResponse> updateInstructor(
-           final InstructorUpdateRequest request,
+    public DataResult<UpdateInstructorResponse> updateInstructor(
+           final UpdateInstructorRequest request,
            final Integer id
     ) {
         Instructor foundInstructor = instructorRepository.findById(id)
@@ -88,10 +88,10 @@ public class InstructorManager implements InstructorService {
         foundInstructor.setNationalIdentity(instructorToUpdate.getCompanyName() != null ? instructorToUpdate.getCompanyName() : foundInstructor.getCompanyName());
         foundInstructor.setDateOfBirth(instructorToUpdate.getDateOfBirth() != null ? instructorToUpdate.getDateOfBirth() : foundInstructor.getDateOfBirth());
 
-        instructorRepository.save(instructorToUpdate);
-        InstructorUpdateResponse instructorResponse = modelMapperService.forResponse().map(foundInstructor,InstructorUpdateResponse.class);
+        instructorRepository.save(foundInstructor);
+        UpdateInstructorResponse instructorResponse = modelMapperService.forResponse().map(foundInstructor, UpdateInstructorResponse.class);
 
-        return new SuccessDataResult<InstructorUpdateResponse>(instructorResponse,"Eğitmen güncellendi.");
+        return new SuccessDataResult<UpdateInstructorResponse>(instructorResponse,"Eğitmen güncellendi.");
     }
 
     @Override

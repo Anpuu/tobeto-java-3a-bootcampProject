@@ -4,13 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.InstructorService;
-import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.update.instructor.request.InstructorUpdateRequest;
-
-import java.util.List;
+import tobeto.bootcamppoject.business.dto.create.instructor.request.CreateInstructorRequest;
+import tobeto.bootcamppoject.business.dto.update.instructor.request.UpdateInstructorRequest;
 
 @RestController
 @RequestMapping("/instructors")
@@ -21,9 +16,9 @@ public class InstructorController extends BaseController {
 
     @PostMapping
     public ResponseEntity<?> create(
-            @RequestBody final InstructorCreateRequest instructorCreateRequest
+            @RequestBody final CreateInstructorRequest createInstructorRequest
     ) {
-        return handleDataResult(instructorService.create(instructorCreateRequest));
+        return handleDataResult(instructorService.create(createInstructorRequest));
     }
 
     @GetMapping("/{id}")
@@ -40,7 +35,7 @@ public class InstructorController extends BaseController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updatedInstructor(
-           @RequestBody final InstructorUpdateRequest request,
+           @RequestBody final UpdateInstructorRequest request,
            @PathVariable final Integer id
     ) {
         return handleDataResult(instructorService.updateInstructor(request,id));

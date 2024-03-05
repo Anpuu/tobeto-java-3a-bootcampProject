@@ -20,7 +20,7 @@ public class Instructor extends User{
     @Column(name = "companyName")
     private String companyName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "instructor")
     private List<Bootcamp> bootcampList;
 
 }

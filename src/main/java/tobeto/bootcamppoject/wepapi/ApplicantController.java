@@ -4,13 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.ApplicantService;
-import tobeto.bootcamppoject.business.dto.create.applicant.request.ApplicantCreatRequest;
-import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.applicant.ApplicantGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.update.applicant.request.ApplicantUpdateRequest;
-import tobeto.bootcamppoject.core.results.DataResult;
-
-import java.util.List;
+import tobeto.bootcamppoject.business.dto.create.applicant.request.CreatApplicantRequest;
+import tobeto.bootcamppoject.business.dto.update.applicant.request.UpdateApplicantRequest;
 
 @RestController
 @RequestMapping("/applicants")
@@ -21,10 +16,10 @@ public class ApplicantController extends BaseController {
 
     @PostMapping
     public ResponseEntity<?> create(
-            @RequestBody final ApplicantCreatRequest applicantCreatRequest
+            @RequestBody final CreatApplicantRequest creatApplicantRequest
     ) {
         return handleDataResult(applicantService.
-                create(applicantCreatRequest));
+                create(creatApplicantRequest));
     }
 
     @GetMapping(value = "/{id}")
@@ -41,11 +36,11 @@ public class ApplicantController extends BaseController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateApplicantById(
-            @RequestBody final ApplicantUpdateRequest applicantUpdateRequest,
+            @RequestBody final UpdateApplicantRequest updateApplicantRequest,
             @PathVariable final int id
     ) {
         return handleDataResult(
-                applicantService.updateByIDApplicant(applicantUpdateRequest, id)
+                applicantService.updateByIDApplicant(updateApplicantRequest, id)
         );
     }
 

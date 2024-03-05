@@ -1,10 +1,9 @@
 package tobeto.bootcamppoject.business.abstracts;
 
-import tobeto.bootcamppoject.business.dto.create.bootcamp.request.BootcampCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.BootcampStateCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.bootcampstate.response.BootcampStateCreateResponse;
+import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.CreateBootcampStateRequest;
+import tobeto.bootcamppoject.business.dto.create.bootcampstate.response.CreateBootcampStateResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 
 public interface BootcampStateService {
-    DataResult<BootcampStateCreateResponse> create(BootcampStateCreateRequest bootcampStateCreateRequest);
+    DataResult<CreateBootcampStateResponse> create(CreateBootcampStateRequest createBootcampStateRequest);
 }

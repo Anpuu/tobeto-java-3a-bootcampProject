@@ -1,26 +1,26 @@
 package tobeto.bootcamppoject.business.abstracts;
 
-import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByPositionResponse;
-import tobeto.bootcamppoject.business.dto.update.employee.request.EmployeeUpdateRequest;
-import tobeto.bootcamppoject.business.dto.update.employee.response.EmployeeUpdateResponse;
+import tobeto.bootcamppoject.business.dto.create.employee.request.CreateEmployeeRequest;
+import tobeto.bootcamppoject.business.dto.create.employee.response.CreateEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetAllEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetByIdEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetByPositionEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.update.employee.request.UpdateEmployeeRequest;
+import tobeto.bootcamppoject.business.dto.update.employee.response.UpdateEmployeeResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
 
 public interface EmployeeService {
-    DataResult<EmployeeCreateResponse> create(EmployeeCreateRequest employeeCreateRequest);
+    DataResult<CreateEmployeeResponse> create(CreateEmployeeRequest createEmployeeRequest);
 
-    DataResult<EmployeeGetByIdResponse> getById(Integer employeeID);
+    DataResult<GetByIdEmployeeResponse> getById(Integer employeeID);
 
-    DataResult<List<EmployeeGetAllResponse>> getAll();
+    DataResult<List<GetAllEmployeeResponse>> getAll();
 
-    DataResult<List<EmployeeGetByPositionResponse>> getEmployeeByPosition(String position);
+    DataResult<List<GetByPositionEmployeeResponse>> getEmployeeByPosition(String position);
 
-    DataResult<EmployeeUpdateResponse> updateByIdEmployee(EmployeeUpdateRequest employeeUpdateRequest, Integer id);
+    DataResult<UpdateEmployeeResponse> updateByIdEmployee(UpdateEmployeeRequest updateEmployeeRequest, Integer id);
 
     DataResult<?> deleteEmployeeById(Integer id);
 }

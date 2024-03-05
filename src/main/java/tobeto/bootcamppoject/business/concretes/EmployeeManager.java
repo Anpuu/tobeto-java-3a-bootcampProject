@@ -3,13 +3,13 @@ package tobeto.bootcamppoject.business.concretes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
-import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.employee.response.EmployeeCreateResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.get.employee.EmployeeGetByPositionResponse;
-import tobeto.bootcamppoject.business.dto.update.employee.request.EmployeeUpdateRequest;
-import tobeto.bootcamppoject.business.dto.update.employee.response.EmployeeUpdateResponse;
+import tobeto.bootcamppoject.business.dto.create.employee.request.CreateEmployeeRequest;
+import tobeto.bootcamppoject.business.dto.create.employee.response.CreateEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetAllEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetByIdEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.get.employee.GetByPositionEmployeeResponse;
+import tobeto.bootcamppoject.business.dto.update.employee.request.UpdateEmployeeRequest;
+import tobeto.bootcamppoject.business.dto.update.employee.response.UpdateEmployeeResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
@@ -29,54 +29,54 @@ public class EmployeeManager implements EmployeeService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public DataResult<EmployeeCreateResponse> create(final EmployeeCreateRequest employeeCreateRequest) {
+    public DataResult<CreateEmployeeResponse> create(final CreateEmployeeRequest createEmployeeRequest) {
 
-        Employee employeeToBeCreat = modelMapperService.forRequest().map(employeeCreateRequest, Employee.class);
+        Employee employeeToBeCreat = modelMapperService.forRequest().map(createEmployeeRequest, Employee.class);
 
         employeeRepository.save(employeeToBeCreat);
 
-        EmployeeCreateResponse response = modelMapperService.forResponse().map(employeeToBeCreat, EmployeeCreateResponse.class);
+        CreateEmployeeResponse response = modelMapperService.forResponse().map(employeeToBeCreat, CreateEmployeeResponse.class);
 
-        return new SuccessDataResult<EmployeeCreateResponse>(response, "Çalışan başarılı bir şekilde oluşturulmuştur.");
+        return new SuccessDataResult<CreateEmployeeResponse>(response, "Çalışan başarılı bir şekilde oluşturulmuştur.");
     }
 
     @Override
-    public DataResult<EmployeeGetByIdResponse> getById(Integer employeeID) {
+    public DataResult<GetByIdEmployeeResponse> getById(Integer employeeID) {
 
         Employee employeeGettingById = employeeRepository.findById(employeeID).orElseThrow(() -> new RuntimeException("İlgili ID'e sahip çalışan getirilmiştir."));
 
-        EmployeeGetByIdResponse response = modelMapperService.forResponse().map(employeeGettingById, EmployeeGetByIdResponse.class);
+        GetByIdEmployeeResponse response = modelMapperService.forResponse().map(employeeGettingById, GetByIdEmployeeResponse.class);
 
-        return new SuccessDataResult<EmployeeGetByIdResponse>(response, "Bu ID'e ait bir çalışan bulunamadı.");
+        return new SuccessDataResult<GetByIdEmployeeResponse>(response, "Bu ID'e ait bir çalışan bulunamadı.");
     }
 
     @Override
-    public DataResult<List<EmployeeGetAllResponse>> getAll() {
+    public DataResult<List<GetAllEmployeeResponse>> getAll() {
 
         List<Employee> employees = employeeRepository.findAll();
 
-        List<EmployeeGetAllResponse> employeeGetAllResponses = employees.stream().map(employee -> modelMapperService.forResponse().map(employee, EmployeeGetAllResponse.class)).collect(Collectors.toList());
+        List<GetAllEmployeeResponse> getAllEmployeeRespons = employees.stream().map(employee -> modelMapperService.forResponse().map(employee, GetAllEmployeeResponse.class)).collect(Collectors.toList());
 
-        return new SuccessDataResult<List<EmployeeGetAllResponse>>(employeeGetAllResponses, "Tüm çalışanlar listelendi.");
+        return new SuccessDataResult<List<GetAllEmployeeResponse>>(getAllEmployeeRespons, "Tüm çalışanlar listelendi.");
     }
 
     @Override
-    public DataResult<List<EmployeeGetByPositionResponse>> getEmployeeByPosition(
+    public DataResult<List<GetByPositionEmployeeResponse>> getEmployeeByPosition(
             final String position
     ) {
 
         List<Employee> listedEmployeeByPosition = employeeRepository.findAllByPosition(position);
 
-        List<EmployeeGetByPositionResponse> response = listedEmployeeByPosition.stream()
+        List<GetByPositionEmployeeResponse> response = listedEmployeeByPosition.stream()
                 .map(employee -> modelMapperService.forResponse()
-                        .map(employee, EmployeeGetByPositionResponse.class)).collect(Collectors.toList());
+                        .map(employee, GetByPositionEmployeeResponse.class)).collect(Collectors.toList());
 
-        return new SuccessDataResult<List<EmployeeGetByPositionResponse>>
+        return new SuccessDataResult<List<GetByPositionEmployeeResponse>>
                 (response, "All Employees Listed By Position");
     }
 
     @Override
-    public DataResult<EmployeeUpdateResponse> updateByIdEmployee(EmployeeUpdateRequest request, Integer id) {
+    public DataResult<UpdateEmployeeResponse> updateByIdEmployee(UpdateEmployeeRequest request, Integer id) {
         Employee employee = employeeRepository.findById(id).orElseThrow();
 
         Employee updatedEmployee = modelMapperService.forRequest().map(request, Employee.class);
@@ -91,9 +91,9 @@ public class EmployeeManager implements EmployeeService {
         employee.setPosition(updatedEmployee.getPosition() != null ? updatedEmployee.getPosition() : employee.getPosition());
 
         employeeRepository.save(employee);
-        EmployeeUpdateResponse response = modelMapperService.forResponse().map(employee, EmployeeUpdateResponse.class);
+        UpdateEmployeeResponse response = modelMapperService.forResponse().map(employee, UpdateEmployeeResponse.class);
 
-        return new SuccessDataResult<EmployeeUpdateResponse>(response, "Employee Updated");
+        return new SuccessDataResult<UpdateEmployeeResponse>(response, "Employee Updated");
     }
 
     @Override

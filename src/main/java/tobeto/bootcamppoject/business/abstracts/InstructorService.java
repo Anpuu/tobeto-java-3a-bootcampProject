@@ -1,23 +1,23 @@
 package tobeto.bootcamppoject.business.abstracts;
 
-import tobeto.bootcamppoject.business.dto.create.instructor.request.InstructorCreateRequest;
-import tobeto.bootcamppoject.business.dto.create.instructor.response.InstructorCreateResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetAllResponse;
-import tobeto.bootcamppoject.business.dto.get.instructor.InstructorGetByIdResponse;
-import tobeto.bootcamppoject.business.dto.update.instructor.request.InstructorUpdateRequest;
-import tobeto.bootcamppoject.business.dto.update.instructor.response.InstructorUpdateResponse;
+import tobeto.bootcamppoject.business.dto.create.instructor.request.CreateInstructorRequest;
+import tobeto.bootcamppoject.business.dto.create.instructor.response.CreateInstructorResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.GetAllInstructorResponse;
+import tobeto.bootcamppoject.business.dto.get.instructor.GetByIdInstructorResponse;
+import tobeto.bootcamppoject.business.dto.update.instructor.request.UpdateInstructorRequest;
+import tobeto.bootcamppoject.business.dto.update.instructor.response.UpdateInstructorResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
 
 import java.util.List;
 
 public interface InstructorService {
-    DataResult<InstructorCreateResponse> create(InstructorCreateRequest instructorCreateRequest);
+    DataResult<CreateInstructorResponse> create(CreateInstructorRequest createInstructorRequest);
 
-    DataResult<InstructorGetByIdResponse> getById(Integer instructorID);
+    DataResult<GetByIdInstructorResponse> getById(Integer instructorID);
 
-    DataResult<List<InstructorGetAllResponse>> getAll();
+    DataResult<List<GetAllInstructorResponse>> getAll();
 
-    DataResult<InstructorUpdateResponse> updateInstructor(InstructorUpdateRequest request,Integer id);
+    DataResult<UpdateInstructorResponse> updateInstructor(UpdateInstructorRequest request, Integer id);
 
     DataResult<?> deletedInstructorById(Integer id);
 }

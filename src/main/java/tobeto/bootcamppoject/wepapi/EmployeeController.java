@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.EmployeeService;
-import tobeto.bootcamppoject.business.dto.create.employee.request.EmployeeCreateRequest;
-import tobeto.bootcamppoject.business.dto.update.employee.request.EmployeeUpdateRequest;
+import tobeto.bootcamppoject.business.dto.create.employee.request.CreateEmployeeRequest;
+import tobeto.bootcamppoject.business.dto.update.employee.request.UpdateEmployeeRequest;
 
 @RestController
 @RequestMapping("/employees")
@@ -16,9 +16,9 @@ public class EmployeeController extends BaseController {
 
     @PostMapping
     public ResponseEntity<?> create(
-            @RequestBody final EmployeeCreateRequest employeeCreateRequest
+            @RequestBody final CreateEmployeeRequest createEmployeeRequest
     ) {
-        return handleDataResult(employeeService.create(employeeCreateRequest));
+        return handleDataResult(employeeService.create(createEmployeeRequest));
     }
 
     @GetMapping(value = "/{id}")
@@ -35,11 +35,11 @@ public class EmployeeController extends BaseController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateByIdEmployee(
-           @RequestBody final EmployeeUpdateRequest employeeUpdateRequest,
+           @RequestBody final UpdateEmployeeRequest updateEmployeeRequest,
            @PathVariable final Integer id
     ) {
 
-        return handleDataResult(employeeService.updateByIdEmployee(employeeUpdateRequest, id));
+        return handleDataResult(employeeService.updateByIdEmployee(updateEmployeeRequest, id));
     }
 
     @DeleteMapping(value = "/{id}")
