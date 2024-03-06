@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tobeto.bootcamppoject.business.abstracts.BootcampStateService;
 import tobeto.bootcamppoject.business.dto.create.bootcampstate.request.CreateBootcampStateRequest;
+import tobeto.bootcamppoject.core.aspects.logging.Loggable;
 
 @RestController
 @RequestMapping("/bootcampstate")
@@ -16,6 +17,7 @@ public class BootcampStateController extends BaseController{
 
     private final BootcampStateService bootcampStateService;
 
+    @Loggable
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreateBootcampStateRequest createBootcampStateRequest

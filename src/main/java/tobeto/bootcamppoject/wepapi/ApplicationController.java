@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.ApplicationService;
 import tobeto.bootcamppoject.business.dto.create.application.request.CreateApplicationRequest;
 import tobeto.bootcamppoject.business.dto.update.application.request.UpdateApplicationRequest;
+import tobeto.bootcamppoject.core.aspects.logging.Loggable;
 import tobeto.bootcamppoject.core.results.DataResult;
 
 @RestController
@@ -15,6 +16,7 @@ public class ApplicationController extends BaseController{
 
     private final ApplicationService applicationService;
 
+    @Loggable
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreateApplicationRequest createApplicationRequest
@@ -23,6 +25,7 @@ public class ApplicationController extends BaseController{
 
     }
 
+    @Loggable
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getById(
             @PathVariable final Integer id
@@ -30,6 +33,7 @@ public class ApplicationController extends BaseController{
         return handleDataResult(applicationService.getById(id));
     }
 
+    @Loggable
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAll(){
         return handleDataResult(applicationService.getAll());
@@ -42,6 +46,7 @@ public class ApplicationController extends BaseController{
         return handleDataResult(applicationService.updateApplication(updateApplicationRequest,id));
     }
 
+    @Loggable
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(
             @PathVariable final Integer id
