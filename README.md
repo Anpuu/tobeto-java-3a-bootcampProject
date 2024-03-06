@@ -36,10 +36,11 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
   
 ### 7.Ödev
 - Docker Kurulumu gerçekleştirildi.
-- docker-compose.yml oluşturuldu ve postgreSQL container konfigurasyonu yazıldı.
+- docker-compose.yml oluşturuldu ve postgreSQL container konfigurasyonu yazıldı ve " bootcampDb " adında otomatik db oluşacak şekilde ayarlandı.
 - docker üzerinde oluşan database sunucusuna migration yapıldı.
 - docker-compose.yml içerisine mongoDb konfigurasyonu eklendi ve oluşturuldu.
-- Loglama docker üzerinden oluşturulan mongodb sunucusuna bağlanıldı.
+- Loglama docker üzerinden oluşturulan mongodb sunucusuna bağlanıldı ve " TobetoLog " adında otomatik db oluşacak şekilde ayarlandı.
+  
   
 #### Ayrıca, projeyi test etmek için Postman koleksiyon dosyası da repoya eklenmiştir.<br>
 
@@ -51,6 +52,7 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 - resources paketi altında -> application.properties dosyası içerisinde ki ayarları kendinize göre güncellemeniz gerekmektedir.
 
 ## Katkıda bulunmak veya projeyi kullanmak için benimle iletişime geçebilirsiniz.
+
 
 ### Docker
 
