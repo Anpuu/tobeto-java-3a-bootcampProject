@@ -27,3 +27,12 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 - resources paketi altında -> application.properties dosyası içerisinde ki ayarları kendinize göre güncellemeniz gerekmektedir.
 
 ## Katkıda bulunmak veya projeyi kullanmak için benimle iletişime geçebilirsiniz.
+
+MongoDB Log
+
+![image](https://github.com/Anpuu/tobeto-java-3a-bootcampProject/assets/71339489/cdb3bf0c-3d69-4893-a608-a86430a98d23)
+
+DBeaver Migration
+
+![image](https://github.com/Anpuu/tobeto-java-3a-bootcampProject/assets/71339489/9a67811e-d1f8-49f3-acf9-3895ec009238)
+
