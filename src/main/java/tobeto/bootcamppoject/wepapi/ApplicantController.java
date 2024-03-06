@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tobeto.bootcamppoject.business.abstracts.ApplicantService;
 import tobeto.bootcamppoject.business.dto.create.applicant.request.CreatApplicantRequest;
 import tobeto.bootcamppoject.business.dto.update.applicant.request.UpdateApplicantRequest;
+import tobeto.bootcamppoject.core.aspects.logging.Loggable;
 
 @RestController
 @RequestMapping("/applicants")
@@ -14,6 +15,7 @@ public class ApplicantController extends BaseController {
 
     private final ApplicantService applicantService;
 
+    @Loggable
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreatApplicantRequest creatApplicantRequest

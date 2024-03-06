@@ -9,3 +9,12 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=123456
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_USERNAME=admin
+      - MONGO_PASSWORD=123456
