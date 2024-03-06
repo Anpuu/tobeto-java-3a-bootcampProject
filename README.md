@@ -18,12 +18,53 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 - Exception kavramı araştırıldı.
 ### 3. Ödev:
 - Results yapısı projeye entegre edildi.
+- Entities katmanına isterdeki sınıflar eklendi.
+- İlgili sınıflar için crud operasyonları yazılıyor..(henüz bitmedi...)
+
+### 4.Ödev
+- exeption yapısı eklenmedi eklenecek..
+- Blacklist sınıfı oluşturulacak...
+- Blacklist crud yazılacak
+- Business logic yazılacak
+
+### 5.Ödev
+- Validasyon eklenecek.
+
+### 6.Ödev
+- Logging projeye eklendi Loglama için mongoDb kuruldu ve veritabanında yapılan loglama ile ilgili detaylar kaydedildi.
+
+  
+### 7.Ödev
+- Docker Kurulumu gerçekleştirildi.
+- docker-compose.yml oluşturuldu ve postgreSQL container konfigurasyonu yazıldı.
+- docker üzerinde oluşan database sunucusuna migration yapıldı.
+- docker-compose.yml içerisine mongoDb konfigurasyonu eklendi ve oluşturuldu.
+- Loglama docker üzerinden oluşturulan mongodb sunucusuna bağlanıldı.
   
 #### Ayrıca, projeyi test etmek için Postman koleksiyon dosyası da repoya eklenmiştir.<br>
 
+#### Projeye Swagger eklenmiştir. http://localhost:8080/swagger-ui/index.html# adresinden ulaşıp denemelerinizi yapabilirsiniz.<br>
+
 #### Proje detaylarına ve kodlara erişmek için tobeto-java-3a-bootcampProject reposunu ziyaret edebilirsiniz.
 
-#### Database olarak postgreSQL kullanılmıştır. Projeyi çalıştırmak için;
+#### Database olarak postgreSQL Loglama için ise MongoDb kullanılmıştır. Son ödevlerden sonra proje docker üzerinden çalışacak şekilde docker-compose.yml eklenmiştir Projeyi çalıştırmak için;
 - resources paketi altında -> application.properties dosyası içerisinde ki ayarları kendinize göre güncellemeniz gerekmektedir.
 
 ## Katkıda bulunmak veya projeyi kullanmak için benimle iletişime geçebilirsiniz.
+
+### Docker
+
+![image](https://github.com/Anpuu/tobeto-java-3a-bootcampProject/assets/71339489/5a405eab-7f53-4062-978c-c45b0bc5158b)
+
+
+
+### MongoDB Log
+
+![image](https://github.com/Anpuu/tobeto-java-3a-bootcampProject/assets/71339489/cdb3bf0c-3d69-4893-a608-a86430a98d23)
+
+
+
+### DBeaver Migration
+
+![image](https://github.com/Anpuu/tobeto-java-3a-bootcampProject/assets/71339489/9a67811e-d1f8-49f3-acf9-3895ec009238)
+
