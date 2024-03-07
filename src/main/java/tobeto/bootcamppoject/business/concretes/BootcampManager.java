@@ -7,6 +7,7 @@ import tobeto.bootcamppoject.business.dto.create.bootcamp.request.CreateBootcamp
 import tobeto.bootcamppoject.business.dto.create.bootcamp.response.CreateBootcampResponse;
 import tobeto.bootcamppoject.business.dto.get.bootcamp.GetAllBootcampResponse;
 import tobeto.bootcamppoject.business.dto.get.bootcamp.GetByIdBootcampResponse;
+import tobeto.bootcamppoject.business.dto.update.application.response.UpdateApplicationResponse;
 import tobeto.bootcamppoject.business.dto.update.bootcamp.request.UpdateBootcampRequest;
 import tobeto.bootcamppoject.business.dto.update.bootcamp.response.UpdateBootcampResponse;
 import tobeto.bootcamppoject.core.results.DataResult;
@@ -17,6 +18,7 @@ import tobeto.bootcamppoject.entity.Bootcamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -45,22 +47,62 @@ public class BootcampManager implements BootcampService {
     }
 
     @Override
-    public DataResult<GetByIdBootcampResponse> getById(Integer applicationId) {
-        return null;
+    public DataResult<GetByIdBootcampResponse> getById(
+            final Integer applicationId
+    ) {
+        Bootcamp foundBootcampGetById = bootcampRepository.findById(applicationId)
+                .orElseThrow(() -> new RuntimeException("Bu ID'e sahip bir bootcamp bulunamamıştır."));
+
+        GetByIdBootcampResponse getByIdBootcampResponse = modelMapperService.forResponse()
+                .map(foundBootcampGetById,GetByIdBootcampResponse.class);
+
+        return new SuccessDataResult<GetByIdBootcampResponse>(getByIdBootcampResponse, "ID'e sahip bootcamp getirilmiştir.");
     }
 
     @Override
     public DataResult<List<GetAllBootcampResponse>> getAll() {
-        return null;
+        List<Bootcamp> bootcampList = bootcampRepository.findAll();
+
+        List<GetAllBootcampResponse> getAllBootcampResponseList = bootcampList.stream()
+                .map(bootcamp -> modelMapperService.forResponse()
+                        .map(bootcamp,GetAllBootcampResponse.class)).collect(Collectors.toList());
+
+        return new SuccessDataResult<List<GetAllBootcampResponse>>
+                (getAllBootcampResponseList,"Tüm bootcampler listelenmiştir.");
     }
 
     @Override
-    public DataResult<UpdateBootcampResponse> updateApplication(UpdateBootcampRequest updateBootcampRequest, Integer applicationId) {
-        return null;
+    public DataResult<UpdateBootcampResponse> updateBootcamp(
+           final UpdateBootcampRequest updateBootcampRequest,
+           final Integer applicationId
+    ) {
+        Bootcamp foundBootcamp = bootcampRepository.findById(applicationId)
+                .orElseThrow(() -> new RuntimeException("Bu ID'e sahip bootcamp bulunamamıştır."));
+
+        Bootcamp bootcampToUpdate = modelMapperService.forRequest().map(foundBootcamp,Bootcamp.class);
+
+        foundBootcamp.setName(bootcampToUpdate.getName() != null ? bootcampToUpdate.getName() : foundBootcamp.getName());
+        foundBootcamp.setInstructor(bootcampToUpdate.getInstructor() != null ? bootcampToUpdate.getInstructor() : foundBootcamp.getInstructor());
+        foundBootcamp.setStartDate(bootcampToUpdate.getStartDate() != null ? bootcampToUpdate.getStartDate() : foundBootcamp.getStartDate());
+        foundBootcamp.setEndDate(bootcampToUpdate.getEndDate() != null ? bootcampToUpdate.getEndDate() : foundBootcamp.getEndDate());
+        foundBootcamp.setBootcampState(bootcampToUpdate.getBootcampState() != null ? bootcampToUpdate.getBootcampState() : foundBootcamp.getBootcampState());
+        foundBootcamp.setUpdateTime(LocalDateTime.now());
+        bootcampRepository.save(foundBootcamp);
+
+        bootcampRepository.save(bootcampToUpdate);
+
+        UpdateBootcampResponse response = modelMapperService.forResponse()
+                .map(foundBootcamp,UpdateBootcampResponse.class);
+
+        return new SuccessDataResult<UpdateBootcampResponse>
+                (response,"Güncelleme başarıyla gerçekleşti.");
     }
 
     @Override
-    public DataResult<?> deletedByIdBootcamp(Integer id) {
-        return null;
+    public DataResult<?> deletedByIdBootcamp(
+            final Integer id
+    ) {
+        bootcampRepository.deleteById(id);
+        return new SuccessDataResult("İlgili ID'e sahip başvuran silindi.");
     }
 }

@@ -21,7 +21,7 @@ public interface BootcampService {
 
     DataResult<List<GetAllBootcampResponse>> getAll();
 
-    DataResult<UpdateBootcampResponse> updateApplication(UpdateBootcampRequest updateBootcampRequest, Integer applicationId);
+    DataResult<UpdateBootcampResponse> updateBootcamp(UpdateBootcampRequest updateBootcampRequest, Integer applicationId);
 
     DataResult<?> deletedByIdBootcamp(Integer id);
 }
