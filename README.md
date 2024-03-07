@@ -1,8 +1,10 @@
 ## TOBETO JAVA 3A BOOTCAMP PROJECT<br>
 Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi içermektedir.<br>
 
-### Yapılanlar:<br>
+## Yapılanlar:<br>
+
 ### 1. Ödev: <br>
+
 - Spring Boot projesi oluşturuldu ve geliştirildi.
 - entities katmanında User, Instructor, Applicant ve Employee sınıfları oluşturuldu.
 - Her sınıf için ilgili alanlar tanımlandı.
@@ -11,11 +13,13 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 - dataaccess katmanında repository sınıfları yazıldı.
 - Request-Response patterni hakkında araştırma yapıldı.
 - @EqualsAndHashCode, @PrimaryKeyJoinColumn, @MappedSuperClass, @Inheritance gibi anotasyonlar hakkında araştırma yapıldı ve kullanıldı.
+
 ### 2. Ödev:<br>
 - ModelMapper implementasyonu projeye entegre edildi.
 - Her entity için CRUD operasyonları yazıldı.
 - Her entity için özel operasyonlar repository içinde field alanlarına göre eklenerek business katmanında kullanıldı.
 - Exception kavramı araştırıldı.
+
 ### 3. Ödev:
 - Results yapısı projeye entegre edildi.
 - Entities katmanına isterdeki sınıflar eklendi.
@@ -23,9 +27,9 @@ Bu repository, Tobeto kurumunda verilen ödevlerin yapıldığı bir projeyi iç
 
 ### 4.Ödev
 - exeption yapısı eklenmedi eklenecek..
-- Blacklist sınıfı oluşturulacak...
-- Blacklist crud yazılacak
-- Business logic yazılacak
+- Blacklist sınıfı eklendi.
+- Blacklist crud yazıldı
+- Business logic yazılacak...
 
 ### 5.Ödev
 - Validasyon eklenecek.
