@@ -10,9 +10,9 @@ import tobeto.bootcamppoject.business.dto.get.applicant.GetAllApplicantResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.GetByIdApplicantResponse;
 import tobeto.bootcamppoject.business.dto.update.applicant.request.UpdateApplicantRequest;
 import tobeto.bootcamppoject.business.dto.update.applicant.response.UpdateApplicantResponse;
-import tobeto.bootcamppoject.core.aspects.logging.Loggable;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.business.rules.UserBusinessRules;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperServiceImpl;
 import tobeto.bootcamppoject.dataAccess.abstracts.ApplicantRepository;
 import tobeto.bootcamppoject.entity.Applicant;
@@ -29,10 +29,15 @@ public class ApplicantManager implements ApplicantService {
 
     private final ModelMapperServiceImpl modelMapperService;
 
+    private final UserBusinessRules userBusinessRules;
+
     @Override
     public DataResult<CreateApplicantResponse> create(
             final CreatApplicantRequest creatApplicantRequest
     ) {
+
+        userBusinessRules.checkIfEmailExists(creatApplicantRequest.getEmail());
+
         Applicant createdApplicant = modelMapperService.forRequest()
                 .map(creatApplicantRequest, Applicant.class);
 
@@ -64,7 +69,6 @@ public class ApplicantManager implements ApplicantService {
     }
 
     @Override
-    @Loggable
     public DataResult<List<GetAllApplicantResponse>> getAll() {
 
         List<Applicant> applicants = applicantRepository.findAll();

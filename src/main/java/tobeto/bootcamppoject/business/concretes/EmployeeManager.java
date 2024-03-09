@@ -10,8 +10,8 @@ import tobeto.bootcamppoject.business.dto.get.employee.GetByIdEmployeeResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.GetByPositionEmployeeResponse;
 import tobeto.bootcamppoject.business.dto.update.employee.request.UpdateEmployeeRequest;
 import tobeto.bootcamppoject.business.dto.update.employee.response.UpdateEmployeeResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.EmployeeRepository;
 import tobeto.bootcamppoject.entity.Employee;
@@ -57,7 +57,7 @@ public class EmployeeManager implements EmployeeService {
 
         List<GetAllEmployeeResponse> getAllEmployeeRespons = employees.stream().map(employee -> modelMapperService.forResponse().map(employee, GetAllEmployeeResponse.class)).collect(Collectors.toList());
 
-        return new SuccessDataResult<List<GetAllEmployeeResponse>>(getAllEmployeeRespons, "Tüm çalışanlar listelendi.");
+        return new SuccessDataResult<>(getAllEmployeeRespons, "Tüm çalışanlar listelendi.");
     }
 
     @Override
@@ -71,8 +71,7 @@ public class EmployeeManager implements EmployeeService {
                 .map(employee -> modelMapperService.forResponse()
                         .map(employee, GetByPositionEmployeeResponse.class)).collect(Collectors.toList());
 
-        return new SuccessDataResult<List<GetByPositionEmployeeResponse>>
-                (response, "All Employees Listed By Position");
+        return new SuccessDataResult<>(response, "Pozisyona göre employeler listelenmiştir.");
     }
 
     @Override
@@ -81,7 +80,7 @@ public class EmployeeManager implements EmployeeService {
 
         Employee updatedEmployee = modelMapperService.forRequest().map(request, Employee.class);
 
-        employee.setId(id);
+
         employee.setUpdateTime(LocalDateTime.now());
         employee.setFirstName(updatedEmployee.getFirstName() != null ? updatedEmployee.getFirstName() : employee.getFirstName());
         employee.setLastName(updatedEmployee.getLastName() != null ? updatedEmployee.getLastName() : employee.getLastName());
@@ -93,7 +92,7 @@ public class EmployeeManager implements EmployeeService {
         employeeRepository.save(employee);
         UpdateEmployeeResponse response = modelMapperService.forResponse().map(employee, UpdateEmployeeResponse.class);
 
-        return new SuccessDataResult<UpdateEmployeeResponse>(response, "Employee Updated");
+        return new SuccessDataResult<>(response, "Employee Updated");
     }
 
     @Override

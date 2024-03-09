@@ -16,7 +16,7 @@ public class ApplicationStateController extends BaseController {
 
     private final ApplicationStateService applicationStateService;
 
-    @Loggable
+
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreateApplicationStateRequest createApplicationStateRequest
@@ -24,7 +24,7 @@ public class ApplicationStateController extends BaseController {
         return handleDataResult(applicationStateService.create(createApplicationStateRequest));
     }
 
-    @Loggable
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getById(
             @PathVariable final Integer id
@@ -32,12 +32,13 @@ public class ApplicationStateController extends BaseController {
         return handleDataResult(applicationStateService.getById(id));
     }
 
-    @Loggable
+
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAll() {
         return handleDataResult(applicationStateService.getAll());
     }
 
+    @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateById(
             @RequestBody final UpdateApplicationStateRequest updateApplicationStateRequest,
             @PathVariable final Integer id
@@ -45,7 +46,7 @@ public class ApplicationStateController extends BaseController {
         return handleDataResult(applicationStateService.updateApplicantState(updateApplicationStateRequest, id));
     }
 
-    @Loggable
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(
             @PathVariable final Integer id

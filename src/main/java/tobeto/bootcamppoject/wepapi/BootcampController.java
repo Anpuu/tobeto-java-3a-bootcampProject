@@ -15,7 +15,7 @@ public class BootcampController  extends BaseController{
 
     private final BootcampService bootcampService;
 
-    @Loggable
+
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreateBootcampRequest createBootcampRequest
@@ -24,7 +24,6 @@ public class BootcampController  extends BaseController{
         return handleDataResult(bootcampService.createBootcamp(createBootcampRequest));
     }
 
-    @Loggable
     @PutMapping("/{id}")
     public ResponseEntity<?> updateBootcamp(
            final UpdateBootcampRequest updateBootcampRequest,
@@ -33,7 +32,7 @@ public class BootcampController  extends BaseController{
         return handleDataResult(bootcampService.updateBootcamp(updateBootcampRequest,id));
     }
 
-    @Loggable
+
     @GetMapping("/{id}")
     public ResponseEntity<?> gettByID(
             final Integer id
@@ -41,13 +40,13 @@ public class BootcampController  extends BaseController{
         return handleDataResult(bootcampService.getById(id));
     }
 
-    @Loggable
+
     @GetMapping
     public ResponseEntity<?> getAll(){
         return handleDataResult(bootcampService.getAll());
     }
 
-    @Loggable
+
     @DeleteMapping
     public ResponseEntity<?> delete(
             final Integer id

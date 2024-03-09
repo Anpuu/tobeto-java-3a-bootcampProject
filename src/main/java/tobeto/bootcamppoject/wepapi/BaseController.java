@@ -2,7 +2,7 @@ package tobeto.bootcamppoject.wepapi;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
 
 @RestController
 public class BaseController {

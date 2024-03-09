@@ -9,9 +9,6 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=123456
-      - POSTGRES_DB=bootcampDb
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
   mongodb:
     container_name: mongodb
@@ -21,10 +18,3 @@ services:
     environment:
       - MONGO_USERNAME=admin
       - MONGO_PASSWORD=123456
-      - MONGO_DATABASE=TobetoLog
-    volumes:
-      - ./mongo_data:/data/db
-
-volumes:
-  pgdata:   
-  mongo_data:

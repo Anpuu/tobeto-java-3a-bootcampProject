@@ -6,7 +6,7 @@ import tobeto.bootcamppoject.business.dto.get.applicant.GetAllApplicantResponse;
 import tobeto.bootcamppoject.business.dto.get.applicant.GetByIdApplicantResponse;
 import tobeto.bootcamppoject.business.dto.update.applicant.request.UpdateApplicantRequest;
 import tobeto.bootcamppoject.business.dto.update.applicant.response.UpdateApplicantResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
 
 import java.util.List;
 

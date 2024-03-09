@@ -6,7 +6,7 @@ import tobeto.bootcamppoject.business.dto.get.blacklist.GetAllBlacklistResponse;
 import tobeto.bootcamppoject.business.dto.get.blacklist.GetBlacklistResponse;
 import tobeto.bootcamppoject.business.dto.update.blacklist.request.UpdateBlacklistRequest;
 import tobeto.bootcamppoject.business.dto.update.blacklist.response.UpdateBlacklistResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
 
 import java.util.List;
 

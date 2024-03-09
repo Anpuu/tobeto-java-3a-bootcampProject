@@ -9,8 +9,8 @@ import tobeto.bootcamppoject.business.dto.get.applicationState.GetAllApplication
 import tobeto.bootcamppoject.business.dto.get.applicationState.GetByIdApplicationStateResponse;
 import tobeto.bootcamppoject.business.dto.update.applicationState.request.UpdateApplicationStateRequest;
 import tobeto.bootcamppoject.business.dto.update.applicationState.response.UpdateApplicationStateResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.ApplicationStateRepository;
 import tobeto.bootcamppoject.entity.ApplicationState;

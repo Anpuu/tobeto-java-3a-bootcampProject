@@ -7,11 +7,10 @@ import tobeto.bootcamppoject.business.dto.create.bootcamp.request.CreateBootcamp
 import tobeto.bootcamppoject.business.dto.create.bootcamp.response.CreateBootcampResponse;
 import tobeto.bootcamppoject.business.dto.get.bootcamp.GetAllBootcampResponse;
 import tobeto.bootcamppoject.business.dto.get.bootcamp.GetByIdBootcampResponse;
-import tobeto.bootcamppoject.business.dto.update.application.response.UpdateApplicationResponse;
 import tobeto.bootcamppoject.business.dto.update.bootcamp.request.UpdateBootcampRequest;
 import tobeto.bootcamppoject.business.dto.update.bootcamp.response.UpdateBootcampResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.BootcampRepository;
 import tobeto.bootcamppoject.entity.Bootcamp;

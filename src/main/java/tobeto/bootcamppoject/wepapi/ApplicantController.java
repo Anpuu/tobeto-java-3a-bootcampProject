@@ -24,7 +24,7 @@ public class ApplicantController extends BaseController {
                 create(creatApplicantRequest));
     }
 
-    @Loggable
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getById(
             @PathVariable final Integer id
@@ -32,13 +32,13 @@ public class ApplicantController extends BaseController {
         return handleDataResult(applicantService.getById(id));
     }
 
-    @Loggable
+
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAll() {
         return handleDataResult(applicantService.getAll());
     }
 
-    @Loggable
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateApplicantById(
             @RequestBody final UpdateApplicantRequest updateApplicantRequest,
@@ -49,13 +49,13 @@ public class ApplicantController extends BaseController {
         );
     }
 
-    @Loggable
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteApplicantByID(@PathVariable final Integer id){
         return handleDataResult(applicantService.deletedByIdApplicant(id));
     }
 
-    @Loggable
+
     @DeleteMapping(value = "/deleteall")
     public ResponseEntity<?> deleteAllApplicant(){
         return handleDataResult(applicantService.deletedAllApplicant());

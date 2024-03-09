@@ -9,8 +9,8 @@ import tobeto.bootcamppoject.business.dto.get.bootcampState.GetAllBootcampStateR
 import tobeto.bootcamppoject.business.dto.get.bootcampState.GetBootcampStateResponse;
 import tobeto.bootcamppoject.business.dto.update.bootcampState.request.UpdateBootcampStateRequest;
 import tobeto.bootcamppoject.business.dto.update.bootcampState.response.UpdateBootcampStateResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.BootcampStateRepository;
 import tobeto.bootcamppoject.entity.BootcampState;

@@ -15,7 +15,7 @@ public class EmployeeController extends BaseController {
 
     private final EmployeeService employeeService;
 
-    @Loggable
+
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody final CreateEmployeeRequest createEmployeeRequest
@@ -23,7 +23,7 @@ public class EmployeeController extends BaseController {
         return handleDataResult(employeeService.create(createEmployeeRequest));
     }
 
-    @Loggable
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getById(
             @PathVariable Integer id
@@ -31,13 +31,13 @@ public class EmployeeController extends BaseController {
         return handleDataResult(employeeService.getById(id));
     }
 
-    @Loggable
+
     @GetMapping(value = "/getall")
     public ResponseEntity<?> getAll() {
         return handleDataResult(employeeService.getAll());
     }
 
-    @Loggable
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateByIdEmployee(
            @RequestBody final UpdateEmployeeRequest updateEmployeeRequest,
@@ -47,13 +47,13 @@ public class EmployeeController extends BaseController {
         return handleDataResult(employeeService.updateByIdEmployee(updateEmployeeRequest, id));
     }
 
-    @Loggable
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletedEmployeeById(@PathVariable final Integer id){
         return handleDataResult(employeeService.deleteEmployeeById(id));
     }
 
-    @Loggable
+
     @GetMapping(value = "/position/{position}")
     public ResponseEntity<?> getEmployeesByPositions(
             @PathVariable final String position

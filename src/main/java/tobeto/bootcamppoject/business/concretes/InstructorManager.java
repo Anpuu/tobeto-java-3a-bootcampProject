@@ -9,8 +9,8 @@ import tobeto.bootcamppoject.business.dto.get.instructor.GetAllInstructorRespons
 import tobeto.bootcamppoject.business.dto.get.instructor.GetByIdInstructorResponse;
 import tobeto.bootcamppoject.business.dto.update.instructor.request.UpdateInstructorRequest;
 import tobeto.bootcamppoject.business.dto.update.instructor.response.UpdateInstructorResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
-import tobeto.bootcamppoject.core.results.success.SuccessDataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.success.SuccessDataResult;
 import tobeto.bootcamppoject.core.utilities.modelmapper.ModelMapperService;
 import tobeto.bootcamppoject.dataAccess.abstracts.InstructorRepository;
 import tobeto.bootcamppoject.entity.Instructor;

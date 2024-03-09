@@ -7,7 +7,7 @@ import tobeto.bootcamppoject.business.dto.get.employee.GetByIdEmployeeResponse;
 import tobeto.bootcamppoject.business.dto.get.employee.GetByPositionEmployeeResponse;
 import tobeto.bootcamppoject.business.dto.update.employee.request.UpdateEmployeeRequest;
 import tobeto.bootcamppoject.business.dto.update.employee.response.UpdateEmployeeResponse;
-import tobeto.bootcamppoject.core.results.DataResult;
+import tobeto.bootcamppoject.core.utilities.results.DataResult;
 
 import java.util.List;
 
